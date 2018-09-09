@@ -325,8 +325,6 @@ if __name__=='__main__':
     plot_train, = plt.plot(Y_VA[:5500], label='actual')
     plt.legend(handles=[plot_predicted, plot_train],loc='upper left')
 
-    print('---------------------到最后的主函数这里\n')
-
 plt.show()
 
 
