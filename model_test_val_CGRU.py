@@ -86,7 +86,6 @@ class BatchGenerator:
         self.so2, self.scaler_so2 = self.generate_batch_data(data_loaded_np[0:, 11], name="so2", timesteps=self.timesteps)
         self.co, self.scaler_co = self.generate_batch_data(data_loaded_np[0:, 12], name="co", timesteps=self.timesteps)
         self.target, self.scaler_target = self.generate_batch_data(data_target[:,9], name="target", timesteps=output)
-        # print('_+_+_+_+_+_+_+_+_+',self.target.shape)
 
         if not (self.scaler_type is None):
             filename = "test_np_" + self.scaler_type + "_process_comp_" + str(self.timesteps) + "_" + str(
@@ -98,7 +97,7 @@ class BatchGenerator:
             print("Found existing file :", "data_log/" + filename)
             print("Loading ...")
             npzfile = np.load("data_log/" + filename)
-            # print('这里是内部的点点滴滴步骤',npzfile['arr_0'])
+            # print(npzfile['arr_0'])
             self.date_proccessd = npzfile['arr_0']
             self.temp = npzfile['arr_1']
             self.pressure = npzfile['arr_2']
@@ -190,7 +189,6 @@ class BatchGenerator:
         else:
             target_serise = self.shift(data,-(timesteps)).astype(np.float32)
             y_batches = np.array([])
-            # print('_+_+_+_+_+_+_+_+_+_+_+',target_serise,target_serise.shape)
 
         # check if file exists
         if (self.scaler_type is None):
@@ -325,7 +323,6 @@ if __name__ == '__main__':
     plot_train, = plt.plot(Y_VA[:], label='actual')
     plt.legend(handles=[plot_predicted, plot_train],loc='upper left')
 
-    print('---------------------到最后的主函数这里\n')
 
 plt.show()
 
