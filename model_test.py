@@ -84,27 +84,14 @@ class BatchGenerator:
             self.norm_scaler = Normalizer().fit(data_loaded_np)
             data_loaded_np = self.norm_scaler.transform(data_loaded_np)
 
-        print(data_loaded_np[0:, 0].shape, '@@@@@@@@@@')
-        self.X_norm_pm, self.y_norm_pm, self.scaler_pm = self.generate_batch_data(data_loaded_np[0:, 0],
-                                                                                  time_steps=self.time_steps,
-                                                                                  name="pm25")
-        # print('@@@@@@@@@@@@')
-        self.X_norm_ws, self.y_norm_ws, self.scaler_ws = self.generate_batch_data(data_loaded_np[0:, 1],
-                                                                                  time_steps=self.time_steps, name="ws")
-        self.X_norm_rh, self.y_norm_rh, self.scaler_rh = self.generate_batch_data(data_loaded_np[0:, 2],
-                                                                                  time_steps=self.time_steps, name="rh")
-        self.X_norm_bp, self.y_norm_bp, self.scaler_bp = self.generate_batch_data(data_loaded_np[0:, 3],
-                                                                                  time_steps=self.time_steps, name="bp")
-        self.X_norm_vws, self.y_norm_vws, self.scaler_vws = self.generate_batch_data(data_loaded_np[0:, 4],
-                                                                                     time_steps=self.time_steps,
-                                                                                     name="vws")
-        self.X_norm_sr, self.y_norm_sr, self.scaler_sr = self.generate_batch_data(data_loaded_np[0:, 5],
-                                                                                  time_steps=self.time_steps, name="sr")
-        self.X_norm_wd, self.y_norm_wd, self.scaler_wd = self.generate_batch_data(data_loaded_np[0:, 6],
-                                                                                  time_steps=self.time_steps, name="wd")
-        self.X_norm_temp, self.y_norm_temp, self.scaler_temp = self.generate_batch_data(data_loaded_np[0:, 7],
-                                                                                        time_steps=self.time_steps,
-                                                                                        name="temp")
+        self.X_norm_pm, self.y_norm_pm, self.scaler_pm = self.generate_batch_data(data_loaded_np[0:, 0],time_steps=self.time_steps,name="pm25")
+        self.X_norm_ws, self.y_norm_ws, self.scaler_ws = self.generate_batch_data(data_loaded_np[0:, 1],time_steps=self.time_steps, name="ws")
+        self.X_norm_rh, self.y_norm_rh, self.scaler_rh = self.generate_batch_data(data_loaded_np[0:, 2],time_steps=self.time_steps, name="rh")
+        self.X_norm_bp, self.y_norm_bp, self.scaler_bp = self.generate_batch_data(data_loaded_np[0:, 3],time_steps=self.time_steps, name="bp")
+        self.X_norm_vws, self.y_norm_vws, self.scaler_vws = self.generate_batch_data(data_loaded_np[0:, 4],time_steps=self.time_steps,name="vws")
+        self.X_norm_sr, self.y_norm_sr, self.scaler_sr = self.generate_batch_data(data_loaded_np[0:, 5],time_steps=self.time_steps, name="sr")
+        self.X_norm_wd, self.y_norm_wd, self.scaler_wd = self.generate_batch_data(data_loaded_np[0:, 6],time_steps=self.time_steps, name="wd")
+        self.X_norm_temp, self.y_norm_temp, self.scaler_temp = self.generate_batch_data(data_loaded_np[0:, 7],time_steps=self.time_steps, name="temp")
 
         if not (self.scaler_type is None):
             filename = "np_" + self.scaler_type + "_process_comp_" + str(self.time_steps) + "_" + str(
@@ -223,7 +210,6 @@ class BatchGenerator:
 
 
 if __name__ == '__main__':
-    print('第一个main函数在这里！')
     epochs = 200
     state_neurons_1 = 1024
     state_neurons_2 = 1024
@@ -286,7 +272,6 @@ if __name__ == '__main__':
 
 # if __name__=='__main__':
 #     print('Validation RMSE :', math.sqrt(mean_squared_error(_Y_VA, Y_VA)))
-#     print('第二个main函数在这里！')
 #     plot_predicted, = plt.plot(_Y_VA[200:300], label='predicted')
 #     plot_train, = plt.plot(Y_VA[200:300], label='actual')
 #     plt.legend(handles=[plot_predicted, plot_train])
