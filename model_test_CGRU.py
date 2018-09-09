@@ -74,20 +74,33 @@ class BatchGenerator:
 
 
         self.date_proccessd, self.scaler_date_proccessd = self.generate_batch_data(data_loaded_np[0:, 0], name="date_processed", timesteps=self.timesteps)
+        
         self.temp, self.scaler_temp = self.generate_batch_data(data_loaded_np[0:, 1], name="temp", timesteps=self.timesteps)
+        
         self.pressure, self.scaler_pressure = self.generate_batch_data(data_loaded_np[0:, 2], name="pressure", timesteps=self.timesteps)
+        
         self.humid, self.scaler_humid = self.generate_batch_data(data_loaded_np[0:, 3], name="humid", timesteps=self.timesteps)
+        
         self.wind_speed, self.scaler_wind_speed = self.generate_batch_data(data_loaded_np[0:, 4],name="wind_speed", timesteps=self.timesteps)
+        
         self.wind_direction, self.scaler_wind_direction = self.generate_batch_data(data_loaded_np[0:, 5], name="wind_direction", timesteps=self.timesteps)
+        
         self.rain, self.scaler_rain = self.generate_batch_data(data_loaded_np[0:, 6],name="rain", timesteps=self.timesteps)
+        
         self.pm25, self.scaler_pm25 = self.generate_batch_data(data_loaded_np[0:, 7],name="pm25", timesteps=self.timesteps)
+        
         self.pm10, self.scaler_pm10 = self.generate_batch_data(data_loaded_np[0:, 8],name="pm10", timesteps=self.timesteps)
+        
         self.no2, self.scaler_no2 = self.generate_batch_data(data_loaded_np[0:, 9], name="no2", timesteps=self.timesteps)
+        
         self.o3, self.scaler_o3 = self.generate_batch_data(data_loaded_np[0:, 10], name="o3", timesteps=self.timesteps)
+        
         self.so2, self.scaler_so2 = self.generate_batch_data(data_loaded_np[0:, 11], name="so2", timesteps=self.timesteps)
+        
         self.co, self.scaler_co = self.generate_batch_data(data_loaded_np[0:, 12], name="co", timesteps=self.timesteps)
+        
         self.target, self.scaler_target = self.generate_batch_data(data_target[:,9], name="target", timesteps=output)
-        # print('_+_+_+_+_+_+_+_+_+',self.target.shape)
+   
 
         if not (self.scaler_type is None):
             filename = "test_np_" + self.scaler_type + "_process_comp_" + str(self.timesteps) + "_" + str(
