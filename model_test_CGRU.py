@@ -112,7 +112,6 @@ class BatchGenerator:
             print("Found existing file :", "data_log/" + filename)
             print("Loading ...")
             npzfile = np.load("data_log/" + filename)
-            # print('这里是内部的点点滴滴步骤',npzfile['arr_0'])
             self.date_proccessd = npzfile['arr_0']
             self.temp = npzfile['arr_1']
             self.pressure = npzfile['arr_2']
@@ -127,7 +126,6 @@ class BatchGenerator:
             self.so2 = npzfile['arr_11']
             self.co = npzfile['arr_12']
             self.target = npzfile['arr_13']
-            # print('真实的训练数据集', data_loaded_np[0:, 1].max(),data_loaded_np[0:, 1].min())
             print("Complete.")
         else:
             # self.Y = self.y_norm_pm
@@ -149,7 +147,6 @@ class BatchGenerator:
             np.savez("data_log/" + filename, self.date_proccessd, self.temp, self.pressure, self.humid, self.wind_speed,
                      self.wind_direction, self.rain, self.pm25, self.pm10, self.no2, self.o3, self.so2, self.co, self.target)
             print("Saved file to :", filename)
-            # print('真实的训练数据集',data_loaded_np[0:,0])
             print("Complete.")
 
 
@@ -203,7 +200,6 @@ class BatchGenerator:
         else:
             target_serise = self.shift(data,-(timesteps)).astype(np.float32)
             y_batches = np.array([])
-            # print('_+_+_+_+_+_+_+_+_+_+_+',target_serise,target_serise.shape)
 
         # check if file exists
         if (self.scaler_type is None):
@@ -275,15 +271,6 @@ if __name__ == '__main__':
     print('目标集大小：', Y_target.shape)
     print('> Data Loaded. Compiling...')
 
-    # print(type(X__humid))
-    # print(np.isnan(X__dp).sum(),'\n', np.isnan(X_temp).sum()'\n',
-    #       np.isnan(X_pressure).sum(),'\n', np.isnan(X_humid).sum(),'\n', \
-    #       np.isnan(X_ws).sum(),'\n', np.isnan(X_wd).sum(),'\n',
-    #       np.isnan(X_rain).sum(),'\n', np.isnan(X_pm25).sum(),'\n',
-    #       np.isnan(X_pm10).sum(),'\n',np.isnan(X_no2).sum(),'\n',
-    #       np.isnan(X_o3).sum(),'\n',np.isnan(X_so2).sum(),'\n',
-    #       np.isnan(X_co).sum(),'\n', np.isnan(Y_target).sum())
-    # sys.exit(100)
 
     #recreate model
     file_name = "wt_GRU_Keras_linear_rmsprop_" + scaler_type + "_dp(" + "_".join(str(x) for x in dropouts) +  ")_200_"\
@@ -333,8 +320,6 @@ if __name__ == '__main__':
     plot_predicted, = plt.plot(_Y_VA[:], label='predicted')
     plot_train, = plt.plot(Y_VA[:], label='actual')
     plt.legend(handles=[plot_predicted, plot_train],loc='upper left')
-
-    print('---------------------到最后的主函数这里\n')
 
 plt.show()
 
