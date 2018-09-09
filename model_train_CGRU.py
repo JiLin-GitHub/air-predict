@@ -99,7 +99,6 @@ class BatchGenerator:
         self.co, self.scaler_co = self.generate_batch_data(data_loaded_np[0:, 12], name="co", timesteps=self.timesteps)
 
         self.target, self.scaler_target = self.generate_batch_data(data_target[:,9], name="target", timesteps=output)
-        # print('_+_+_+_+_+_+_+_+_+',self.target.shape)
 
         if not (self.scaler_type is None):
             if self.factor_num == '1':
@@ -122,7 +121,7 @@ class BatchGenerator:
             print("Found existing file :", "data_log/" + filename)
             print("Loading ...")
             npzfile = np.load("data_log/" + filename)
-            # print('这里是内部的点点滴滴步骤',npzfile['arr_0'])
+            # print(npzfile['arr_0'])
             self.date_proccessd = npzfile['arr_0']
             self.temp = npzfile['arr_1']
             self.pressure = npzfile['arr_2']
