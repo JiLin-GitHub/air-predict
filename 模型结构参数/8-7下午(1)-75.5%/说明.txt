@@ -1,0 +1,10 @@
+epochs = 50
+    state_neurons_1 = 256
+    state_neurons_2 = 512
+    state_neurons_3 = 512
+    output = 24
+    seed = 7
+    batch_size = 100
+    scaler_type = "standard"
+    dropouts = [0.15, 0.25, 0.45]
+    seq_len = 48
